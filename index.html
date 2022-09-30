@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" charset="utf-8"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="sky">
+        <div id="birdimage"></div>
+        <h1 id="highscore-container">HI: <span id="highscore">0</span></h1>
+        <div id="bird"></div>
+      </div>
+      <div class="pipe pipe-top"></div>
+      <div class="pipe pipe-bottom"></div>
+      <div class="ground"></div>
+      <div id="game-over-overlay">
+        <h1>It's Over!</h1>
+        <button id="reset-game-button">Reset Game</button>
+      </div>
+    </div>
+  </body>
+</html>

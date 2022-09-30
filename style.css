@@ -1,0 +1,89 @@
+html,
+body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+}
+
+.game-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.sky {
+  background-color: #3498db;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#highscore-container {
+  right: 5%;
+  position: absolute;
+}
+
+.ground {
+  background-color: #2ecc71;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 0%;
+}
+
+.pipe {
+  width: 140px;
+  height: 40%;
+  position: absolute;
+  right: 30%;
+}
+
+.pipe-bottom {
+  bottom: 0%;
+  background-image: url(images/bird-pipe-removebg-preview.png);
+}
+
+.pipe-top {
+  top: 0%;
+  background-image: url(images/bird-pipe-removebg-preview-flipped.png);
+}
+
+#bird {
+  position: relative;
+  width: 80px;
+  height: 65px;
+  left: 20%;
+  background-image: url(images/bird.png);
+  background-size: cover;
+  transition: bottom 0.2s ease, transform 0.2s ease;
+  transform: rotate(25deg);
+}
+
+#birdimage {
+  width: 100px;
+  height: 100px;
+  background-image: url(images/bird.png);
+  background-size: cover;
+  position: absolute;
+  left: 1em;
+}
+
+#game-over-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.75;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  visibility: hidden;
+}
+
+#game-over-overlay.visible {
+  visibility: visible;
+}
