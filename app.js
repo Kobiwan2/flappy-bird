@@ -2,10 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const bird = document.querySelector("#bird");
   const gameDisplay = document.querySelector(".game-container");
   const ground = document.querySelector("#ground-container");
-  const pipes = document.querySelectorAll(".pipe");
+  const pipeTop = document.querySelector(".pipe-top");
+  const pipeBottom = document.querySelector(".pipe-bottom");
   const highScoreElement = document.getElementById("highscore");
   const gameOverOverlay = document.getElementById("game-over-overlay");
   const resetGameButton = document.getElementById("reset-game-button");
+  const GROUND_HEIGHT_PX = 50;
 
   const originalBirdBottomPercent = 0;
   let birdBottomPercent = originalBirdBottomPercent;
@@ -25,10 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     pipe.style.left = nextPipeLeftValue + "%";
   }
+  // TODO: take into account ground height
+  function changePipeHeightRandomly(pipe, position) {
+    if(position === "top") {
+      pipe.style.top = parseInt(Math.random() * -128) + "px";
+      return;
+    }
 
-  function changePipeHeightRandomly(pipe) {
-    // 5 - 35
-    pipe.style.height = parseInt(Math.max(35, Math.random() * 45)) + "%";
+    if(position === "bottom") {
+      pipe.style.bottom = parseInt(Math.random() * -128) + "px";
+      return;
+    }
   }
 
   function up() {
@@ -87,14 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function isBirdCollidingWithGround() {
     const rect = bird.getBoundingClientRect();
-
-    const outOfBoundsLeft = rect.x + rect.width < 0;
     const outOfBoundsBottom = rect.y + rect.height < 0;
-    const outOfBoundsRight = rect.x > window.innerWidth;
-    const outOfBoundsTop = rect.y > window.innerHeight;
-
     return (
-      outOfBoundsLeft || outOfBoundsBottom || outOfBoundsRight || outOfBoundsTop
+      outOfBoundsBottom
     );
   }
 
@@ -113,13 +117,17 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    pipes.forEach((pipe) => {
-      if (isPipeOutOfBoundsLeft(pipe)) {
-        changePipeHeightRandomly(pipe);
-      }
+    if (isPipeOutOfBoundsLeft(pipeTop)) {
+      changePipeHeightRandomly(pipeTop, "top");
+    }
+    
+    movePipeLeft(pipeTop);
 
-      movePipeLeft(pipe);
-    });
+    if (isPipeOutOfBoundsLeft(pipeBottom)) {
+      changePipeHeightRandomly(pipeBottom, "bottom");
+    }
+
+    movePipeLeft(pipeBottom);
 
     increaseHighscore();
   }

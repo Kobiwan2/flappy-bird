@@ -5,6 +5,8 @@ body {
   width: 100%;
   overflow: hidden;
   font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .game-container {
@@ -23,31 +25,36 @@ body {
 #highscore-container {
   right: 5%;
   position: absolute;
+  margin-top: 16px;
 }
 
 .ground {
-  background-color: #2ecc71;
+  background-color: #00b805;
   width: 100%;
   height: 50px;
   position: absolute;
   bottom: 0%;
+  border-top: 1px solid black;
 }
 
 .pipe {
-  width: 140px;
-  height: 40%;
+  width: 58px;
+  height: 255px;
   position: absolute;
   right: 30%;
+  background-repeat: no-repeat;
 }
 
 .pipe-bottom {
+  background-position: bottom left;
   bottom: 0%;
-  background-image: url(images/bird-pipe-removebg-preview.png);
+  background-image: url(images/bottom-pipe.png);
 }
 
 .pipe-top {
+  background-position: top left;
   top: 0%;
-  background-image: url(images/bird-pipe-removebg-preview-flipped.png);
+  background-image: url(images/top-pipe.png);
 }
 
 #bird {
@@ -62,12 +69,10 @@ body {
 }
 
 #birdimage {
-  width: 100px;
-  height: 100px;
-  background-image: url(images/bird.png);
-  background-size: cover;
+  font-size: 2em;
   position: absolute;
   left: 1em;
+  margin-top: 16px;
 }
 
 #game-over-overlay {
